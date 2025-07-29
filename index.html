@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App Redirect</title>
+  <script>
+    window.onload = function () {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Replace these with your actual app store URLs
+      const androidAppURL = "https://play.google.com/store/apps/details?id=com.wsc.scm_mobile&utm_source=na_Med";
+      const iosAppURL = "https://apps.apple.com/us/app/my-utility-account-mobile/id1447552942";
+
+      if (/android/i.test(userAgent)) {
+        window.location.href = androidAppURL;
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        window.location.href = iosAppURL;
+      } else {
+        // Optional: fallback for other devices (e.g., desktop)
+        document.getElementById("message").textContent = "Please open this page on a mobile device to download the app.";
+      }
+    };
+  </script>
+</head>
+<body>
+  <h1 id="message">Redirecting to your app store...</h1>
+</body>
+</html>
